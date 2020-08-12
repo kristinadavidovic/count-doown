@@ -2,40 +2,13 @@
     <div class="timer">
         <div class="timer__controls">
             <button
-                data-time="300"
-                @click.prevent="startTimer"
+                v-for="timer in savedTimers"
+                :data-time="timer.seconds"
                 class="timer__button"
-            >
-                5
-            </button>
-            <button
-                data-time="900"
                 @click.prevent="startTimer"
-                class="timer__button"
             >
-                15
+                {{ timer.minutes }}
             </button>
-            <button
-                data-time="1200"
-                @click.prevent="startTimer"
-                class="timer__button"
-            >
-                20
-            </button>
-            <div class="timer__form">
-                <form
-                    name="customForm"
-                    @submit.prevent="customMinutes"
-                    ref="form"
-                >
-                    <input
-                        type="text"
-                        name="minutes"
-                        placeholder="Enter Minutes"
-                    />
-                    <button type="submit"></button>
-                </form>
-            </div>
         </div>
         <div class="display">
             <h1 class="display__time-left">{{ timeLeft }}</h1>
@@ -43,10 +16,22 @@
                 {{ timeEndsAt }}
             </p>
         </div>
+        <div class="timer__form">
+            <form name="customForm" @submit.prevent="customMinutes" ref="form">
+                <input
+                    type="number"
+                    name="minutes"
+                    placeholder="Enter Minutes"
+                />
+                <button type="submit"></button>
+            </form>
+        </div>
     </div>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+
     export default {
         name: 'Timer',
         data() {
@@ -55,6 +40,9 @@
                 timeEndsAt: 0,
                 countdown: null,
             };
+        },
+        computed: {
+            ...mapState(['savedTimers']),
         },
         methods: {
             timer(seconds) {
