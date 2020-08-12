@@ -1,0 +1,86 @@
+.display__time-left {
+    font-size: 36vw;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.timer__controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+}
+
+.timer__button {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    height: 15vw;
+    width: 15vw;
+    border: 2px solid $color-white;
+    border-radius: 50%;
+    margin: 0 3vw 20px;
+    background: none;
+    color: $color-white;
+    font-weight: 600;
+    font-size: 6vw;
+    text-align: center;
+}
+
+.timer__form {
+    width: 100%;
+    max-width: 100%;
+
+    form {
+        position: relative;
+        display: flex;
+    }
+
+    input {
+        width: 100%;
+        max-width: 100%;
+        background: transparent;
+        padding: 15px;
+        border: 2px solid $color-white;
+        border-radius: 25px;
+        color: $color-white;
+        font-family: $font-family-main;
+    }
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: $color-white;
+
+        &::after {
+            content: '↬';
+            display: inline-block;
+            font-size: 40px;
+        }
+    }
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 30px;
+}
+
+.display__end-time {
+    font-size: 10vw;
+}

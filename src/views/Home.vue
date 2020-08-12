@@ -1,16 +1,16 @@
 <template>
     <div class="home">
-        <HelloWorld />
+        <Timer />
     </div>
 </template>
 
 <script>
-    import HelloWorld from '@/components/HelloWorld.vue';
+    import Timer from '../components/Timer';
 
     export default {
         name: 'Home',
         components: {
-            HelloWorld,
+            Timer,
         },
     };
 </script>

@@ -1,1 +1,9 @@
+@import 'setup/reset';
+
+// setup
+@import 'setup/variables';
 @import 'setup/base';
+
+// components
+@import 'components/navigation';
+@import 'components/timer';

@@ -1,42 +1,28 @@
 <template>
-    <div class="hello">
-        <div class="timer">
-            <div class="timer__controls">
-                <button
-                    data-time="20"
-                    @click.prevent="startTimer"
-                    class="timer__button"
-                >
-                    20 Secs
-                </button>
-                <button
-                    data-time="300"
-                    @click.prevent="startTimer"
-                    class="timer__button"
-                >
-                    Work 5
-                </button>
-                <button
-                    data-time="900"
-                    @click.prevent="startTimer"
-                    class="timer__button"
-                >
-                    Quick 15
-                </button>
-                <button
-                    data-time="1200"
-                    @click.prevent="startTimer"
-                    class="timer__button"
-                >
-                    Snack 20
-                </button>
-                <button
-                    data-time="3600"
-                    @click.prevent="startTimer"
-                    class="timer__button"
-                >
-                    Lunch Break
-                </button>
+    <div class="timer">
+        <div class="timer__controls">
+            <button
+                data-time="300"
+                @click.prevent="startTimer"
+                class="timer__button"
+            >
+                5
+            </button>
+            <button
+                data-time="900"
+                @click.prevent="startTimer"
+                class="timer__button"
+            >
+                15
+            </button>
+            <button
+                data-time="1200"
+                @click.prevent="startTimer"
+                class="timer__button"
+            >
+                20
+            </button>
+            <div class="timer__form">
                 <form
                     name="customForm"
                     @submit.prevent="customMinutes"
@@ -47,22 +33,22 @@
                         name="minutes"
                         placeholder="Enter Minutes"
                     />
-                    <button type="submit">Start custom timer</button>
+                    <button type="submit"></button>
                 </form>
             </div>
-            <div class="display">
-                <h1 class="display__time-left">{{ timeLeft }}</h1>
-                <p class="display__end-time" v-if="countdown">
-                    {{ timeEndsAt }}
-                </p>
-            </div>
+        </div>
+        <div class="display">
+            <h1 class="display__time-left">{{ timeLeft }}</h1>
+            <p class="display__end-time" v-if="countdown">
+                {{ timeEndsAt }}
+            </p>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'HelloWorld',
+        name: 'Timer',
         data() {
             return {
                 timeLeft: 0,
@@ -97,9 +83,7 @@
             displayTimeLeft(seconds) {
                 const minutes = Math.floor(seconds / 60);
                 const remainderSeconds = `${seconds % 60}`.padStart(2, '0');
-                const display = `${minutes}:${remainderSeconds}`;
-                document.title = display;
-                this.timeLeft = display;
+                this.timeLeft = `${minutes}:${remainderSeconds}`;
             },
             displayEndTime(timestamp) {
                 const end = new Date(timestamp);
